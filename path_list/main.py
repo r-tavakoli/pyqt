@@ -1,16 +1,40 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from PyQt5.QtWidgets import QApplication, QWidget, QDesktopWidget
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+class MainWindow(QWidget):
+    height = 500
+    width = 500
+
+    def __init__(self):
+        super().__init__()
+
+        # windows properties
+        self.setGeometry(100, 100, MainWindow.width, MainWindow.height)
+        self.setWindowTitle('Path Lister')
+
+        # fixing the size
+        self.setMaximumSize(MainWindow.width, MainWindow.height)
+        self.setMinimumSize(MainWindow.width, MainWindow.height)
+
+        # puts window in center of screen
+        current_position = self.frameGeometry()
+        screen_geometry = QDesktopWidget().availableGeometry().center()
+        current_position.moveCenter(screen_geometry)
+        self.move(current_position.topLeft())
+
+        # create and show ui
+        self.ui()
+        self.show()
+
+    def ui(self):
+        pass
 
 
-# Press the green button in the gutter to run the script.
+def main():
+    app = QApplication([])
+    ui = MainWindow()
+    app.exec_()
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    main()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/

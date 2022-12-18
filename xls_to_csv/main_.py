@@ -76,8 +76,6 @@ class MainWindow(QWidget):
         # get path
         source_path = self.excel_path_txt.text().encode('unicode_escape').decode().replace('\\\\', '\\')
         destination_path = self.csv_path_txt.text().encode('unicode_escape').decode().replace('\\\\', '\\')
-        print(source_path)
-        print(destination_path)
 
         # load workbook
         wb = load_workbook(filename=source_path, data_only=True)
